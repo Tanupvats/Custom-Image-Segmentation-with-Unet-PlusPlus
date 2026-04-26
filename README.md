@@ -4,6 +4,31 @@
 ## Overview
 This project is an implementation of a segmentation pipeline using the UNet++ model to segment various exterior parts of cars. It is organized into modular components to handle different parts of the workflow, including data preparation, model definition, training, evaluation, and visualization of results. The segmentation focuses on segmenting up to 50 car body parts from input images.
 
+## Demo
+
+-----
+
+<table width="90%" align="center" style="table-layout: fixed;">
+  <thead>
+    <tr>
+      <th align="center" style="font-size: 12px;">LS Pose Segementation Map</th>
+      <th align="center" style="font-size: 12px;">RS Pose Segementation Map</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="segmentation_demo_1.gif" width="100%" alt="Object Detection"></td>
+      <td><img src="segmentation_demo.gif" width="100%" alt="Baselines"></td>
+    </tr>
+  </tbody>
+</table>
+
+### car parts segment visualizer with sam
+
+[![Demo body measurement](car_part_segmenter_demo_sam)]()
+
+
+
 ## Project Structure
 The project is organized into separate scripts to enhance modularity and maintainability. Below is the directory structure:
 
