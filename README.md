@@ -25,7 +25,7 @@ This project is an implementation of a segmentation pipeline using the UNet++ mo
 
 ### car parts segment visualizer with sam
 
-[![Demo body measurement](car_part_segmenter_demo_sam)]()
+[![carpart_segmenter](car_part_segmenter_demo_sam.gif)]()
 
 
 
