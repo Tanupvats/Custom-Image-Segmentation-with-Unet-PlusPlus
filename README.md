@@ -29,7 +29,7 @@ exterior part segmentation (50 classes), supporting three model families:
 ### Car Parts Segmentation Visualizer With SAM
 
 
-![Car Segmentation Example](./seg_demo_image.jpg)
+[![Car Parts Segment SAM ](car_part_segmenter_demo_sam.gif)]()
 
 
 ## Project layout
