@@ -1,25 +1,37 @@
+# Core
+torch>=2.1.0
+torchvision>=0.16.0
 
-# requirements.txt
+# Segmentation models (pretrained UNet++/SegFormer/etc.)
+segmentation-models-pytorch>=0.3.3
+timm>=0.9.12
 
-# Python version
-python>=3.7
+# Transformers stack for SegFormer / DPT / SAM
+transformers>=4.40.0
+accelerate>=0.27.0
 
-# PyTorch and related libraries
-torch>=1.9.0
-torchvision>=0.10.0
+# Segment Anything (Meta)
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
 
-# Image processing
-opencv-python>=4.5.3
-albumentations>=1.0.3
+# Vision basics
+opencv-python>=4.8.0
+albumentations>=1.4.0
+numpy>=1.24.0
+scipy>=1.10.0
+Pillow>=10.0.0
 
-# Utilities
-numpy>=1.21.0
-tqdm>=4.61.2
-matplotlib>=3.4.2
+# Training utilities
+tqdm>=4.66.0
+pyyaml>=6.0
+tensorboard>=2.15.0
+wandb>=0.16.0  # optional, gated by config flag
 
-# For PyTorch tensor transformations
-albumentations[imgaug]
+# Eval/metrics
+scikit-learn>=1.3.0
 
-# Optional GPU support (install CUDA-specific packages if needed)
-# torch==1.9.0+cu111
-# torchvision==0.10.0+cu111
+# Export / inference
+onnx>=1.15.0
+onnxruntime>=1.17.0  # use onnxruntime-gpu if you want CUDA EP
+
+# Visualization
+matplotlib>=3.7.0

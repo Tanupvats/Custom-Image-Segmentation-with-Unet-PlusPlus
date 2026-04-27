@@ -1,0 +1,70 @@
+
+
+experiment:
+  name: segformer_b2
+  output_dir: runs/segformer_b2
+  seed: 42
+
+model:
+  family: segformer
+  hf_id: nvidia/mit-b2              # mit-b0..mit-b5
+  num_classes: 50
+  ignore_mismatched_sizes: true     # because we replace the head
+
+data:
+  train_images: data/car_parts/train/images
+  train_masks:  data/car_parts/train/masks
+  val_images:   data/car_parts/val/images
+  val_masks:    data/car_parts/val/masks
+  image_size: 512
+  mask_suffix_replace: null
+  ignore_index: 255
+
+train:
+  epochs: 80
+  batch_size: 8
+  num_workers: 8
+  pin_memory: true
+  persistent_workers: true
+  optimizer: adamw
+  lr: 6.0e-5                        # SegFormer trains best with smaller lr
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  scheduler: poly                   # poly is what the SegFormer paper used
+  poly_power: 1.0
+  warmup_epochs: 2
+  grad_clip_norm: 1.0
+  amp: true
+  ema_decay: 0.9995
+  log_every: 20
+
+loss:
+  components:
+    - {type: dice, weight: 1.0, mode: multiclass, from_logits: true}
+    - {type: cross_entropy, weight: 1.0, label_smoothing: 0.05}
+  class_weights: null
+
+augment:
+  horizontal_flip_p: 0.5
+  shift_scale_rotate_p: 0.5
+  shift_limit: 0.0625
+  scale_limit: 0.10
+  rotate_limit: 12
+  brightness_contrast_p: 0.5
+  hue_saturation_p: 0.4
+  gauss_noise_p: 0.2
+  motion_blur_p: 0.15
+  cutout_p: 0.2
+  cutout_max_holes: 4
+  cutout_max_size: 32
+
+eval:
+  tta: false
+  sliding_window: false
+  sliding_window_size: 512
+  sliding_window_stride: 384
+
+logging:
+  tensorboard: true
+  wandb: false
+  wandb_project: car-parts-seg
